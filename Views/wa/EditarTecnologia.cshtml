@@ -1,0 +1,22 @@
+@model Desafio_MVC.DTO.TecnologiaDTO
+@{
+    Layout = "_LayoutAdmin";
+}
+<h1>Editar Tecnologia</h1>
+<hr/>
+<form class="form-horizontal" asp-action="Atualizar" asp-controller="Tecnologia" method="POST">  
+<input type="hidden" asp-for="Id" ><br>
+
+<label asp-for="NomeTec">Nome da Tecnologia:</label>
+<input class="form-control" type="text" asp-for="NomeTec"placeholder="Digite o Nome da Tecnologia">
+<span class="text-danger"asp-validation-for="NomeTec"></span><br><br>
+
+<label asp-for="TipoTec">Tipo da Tecnologia:</label>
+<input class="form-control" type="text" asp-for="TipoTec"placeholder="Digite o Tipo da Tecnologia">
+<span class="text-danger"asp-validation-for="TipoTec"></span><br><br>
+
+<button class="btn btn-success">Atualizar</button><br><br>
+
+</form>
+
+<a href="javascript:history.back();">Voltar</a>

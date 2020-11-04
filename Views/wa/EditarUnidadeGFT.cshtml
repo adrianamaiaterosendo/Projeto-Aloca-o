@@ -1,0 +1,38 @@
+@model Desafio_MVC.DTO.GftDTO;
+
+
+<h3>Editar Unidade</h3>
+<hr>
+<form class="form-horizontal" asp-controller="GFT" asp-action="Atualizar" method="POST">
+
+<input type="hidden" asp-for="Id" ><br>
+
+<label asp-for="Cep">CEP:</label>
+<input class="form-control" type="text" asp-for="Cep" placeholder="Digite um CEP">
+<span class="text-danger" asp-validation-for="Cep"></span><br><br>
+
+<label asp-for="Cidade">Cidade:</label>
+<input class="form-control" type="text" asp-for="Cidade"placeholder="Digite uma Cidade">
+<span class="text-danger"asp-validation-for="Cidade"></span><br><br>
+
+<label asp-for="Endereco">Endereço:</label>
+<input class="form-control" type="text" asp-for="Endereco"placeholder="Digite o Endereço">
+<span class="text-danger"asp-validation-for="Endereco"></span><br><br>
+
+<label asp-for="Estado">Estado:</label>
+<input class="form-control" type="text" asp-for="Estado"placeholder="Digite o Estado">
+<span class="text-danger"asp-validation-for="Estado"></span><br><br>
+
+<label asp-for="Nome">Nome da Unidade:</label>
+<input class="form-control" type="text" asp-for="Nome"placeholder="Digite o Nome da Unidade">
+<span class="text-danger"asp-validation-for="Nome"></span><br><br>
+
+<label asp-for="Telefone">Telefone:</label>
+<input class="form-control" type="text" asp-for="Telefone"placeholder="Digite o Telefone da Unidade">
+<span class="text-danger"asp-validation-for="Telefone"></span><br><br>
+
+<button class="btn btn-success">Atualizar</button><br><br>
+
+</form>
+
+<a href="javascript:history.back();">Voltar</a>

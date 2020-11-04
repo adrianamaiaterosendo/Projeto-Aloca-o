@@ -1,0 +1,50 @@
+@model IEnumerable<Desafio_MVC.Models.Gft>
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<a asp-action="CadastrarGFT" asp-controller="Wa" class="btn btn-info">Cadastrar Nova Unidade</a>
+
+
+<hr>
+    <h2>Lista de Unidades</h2>
+    <hr>
+
+    <script>   $(document).ready( function () {
+    $('#Gft').DataTable();
+} );</script>
+    
+
+
+<table id="Gft" class= "table table-striped table-bordered">
+  <thead>
+    <tr>
+        <th>Id</th>
+        <th>Cep</th>
+        <th>Cidade</th>
+        <th>Endereço</th>
+        <th>Estado</th>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>Ações</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var gft in Model)
+{
+    <tr>
+        <td>@gft.Id</td> 
+        <td>@gft.Cep</td>
+        <td>@gft.Cidade</td>
+        <td>@gft.Endereco</td>
+        <td>@gft.Estado</td>
+        <td>@gft.Nome</td>
+        <td>@gft.Telefone</td>
+        
+        <td><a class="btn btn-primary" href="/wa/EditarUnidadeGFT/@gft.Id">Editar</a> <a class="btn btn-danger"href="/GFT/Deletar/@gft.Id">Deletar</a></td>    
+    </tr>
+}
+</tbody>
+</table><br>
+
+<a href="javascript:history.back();">Voltar</a>

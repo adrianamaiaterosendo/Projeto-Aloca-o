@@ -1,0 +1,19 @@
+@model Desafio_MVC.DTO.TecnologiaDTO
+@{
+    Layout = "_LayoutAdmin";
+}
+<h1>Cadastro de Nova Tecnologia</h1>
+<hr/>
+<form class="form-horizontal" asp-action="Salvar" asp-controller="Tecnologia" method="POST">  
+<input type="hidden" asp-for="Id" value="0"><br>
+<label asp-for="NomeTec">Nome da Tecnologia:</label>
+<input class="form-control" type="text" asp-for="NomeTec"placeholder="Digite o Nome da Tecnologia">
+<span class="text-danger"asp-validation-for="NomeTec"></span><br><br>
+<label asp-for="TipoTec">Tipo da Tecnologia:</label>
+<input class="form-control" type="text" asp-for="TipoTec"placeholder="Digite o Tipo da Tecnologia">
+<span class="text-danger"asp-validation-for="TipoTec"></span><br><br>
+<button class="btn btn-success">Cadastrar</button><br><br>
+
+</form>
+
+<a href="javascript:history.back();">Voltar</a>
