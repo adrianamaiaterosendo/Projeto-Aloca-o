@@ -39,7 +39,17 @@ namespace Desafio_MVC.Controllers
             return View();
         }
 
-            public IActionResult EditarUnidadeGFT (int id){
+        public IActionResult Funcionarios(){
+            var funcionario = database.Funcionarios.ToList();
+            return View(funcionario);
+        }
+
+        public IActionResult Cadastrar(){
+            ViewBag.Tecnologia = database.Tecnologias.ToList();
+            ViewBag.Gft = database.Gfts.ToList();
+            return View();
+        }
+        public IActionResult EditarUnidadeGFT (int id){
             var unidadeGft = database.Gfts.First(gft => gft.Id == id);
             GftDTO gftView = new GftDTO();
             gftView.Id = unidadeGft.Id;
@@ -51,7 +61,7 @@ namespace Desafio_MVC.Controllers
             gftView.Telefone = unidadeGft.Telefone;
             return View (gftView);
         }
-            public IActionResult EditarTecnologia (int id){
+        public IActionResult EditarTecnologia (int id){
             var tecnologia = database.Tecnologias.First(tec => tec.Id == id);
             TecnologiaDTO tecnologiaView = new TecnologiaDTO();
             tecnologiaView.Id = tecnologia.Id;
