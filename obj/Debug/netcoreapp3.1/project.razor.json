@@ -14397,6 +14397,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\Vagas.cshtml",
+      "TargetPath": "Views\\wa\\Vagas.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\UnidadesGFT.cshtml",
       "TargetPath": "Views\\wa\\UnidadesGFT.cshtml",
       "FileKind": "mvc"
@@ -14449,6 +14454,16 @@
     {
       "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\CadastrarVaga.cshtml",
+      "TargetPath": "Views\\wa\\CadastrarVaga.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\EditarFuncionario.cshtml",
+      "TargetPath": "Views\\wa\\EditarFuncionario.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -24,7 +24,7 @@ namespace Desafio_MVC.DTO
         [Required (ErrorMessage="E-mail é obrigatório!")]
         [EmailAddress(ErrorMessage="E-mail inválido!")]
         public string Email { get; set; }
-        public bool Alocado {get; set;}
+        
         [Required (ErrorMessage="Tecnologia principal é obrigatório!")]
         public int TecnologiaId {get; set;}
         [Required (ErrorMessage="Unidade GFT é obrigatório!")]

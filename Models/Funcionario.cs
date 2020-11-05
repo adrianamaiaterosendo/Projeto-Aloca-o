@@ -13,12 +13,12 @@ namespace Desafio_MVC.Models
         public string Telefone { get; set; }
         public string Email { get; set; }
         public bool Alocado {get; set;}
-
+        
         public Tecnologia Tecnologia {get; set;}
 
         public Gft Gft { get; set; }
 
-        public Vaga Vaga {get; set; }
+        public Vaga Vaga {get; set; } 
 
         
     }

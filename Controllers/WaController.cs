@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Desafio_MVC.Models;
 using Desafio_MVC.Data;
 using Desafio_MVC.DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace Desafio_MVC.Controllers
 {
@@ -40,11 +41,22 @@ namespace Desafio_MVC.Controllers
         }
 
         public IActionResult Funcionarios(){
-            var funcionario = database.Funcionarios.ToList();
-            return View(funcionario);
+            var Funcionario = database.Funcionarios.Include(f => f.Tecnologia).Include(f => f.Gft).Where(f => f.Alocado == false).ToList();
+            return View(Funcionario);
         }
 
         public IActionResult Cadastrar(){
+            ViewBag.Tecnologia = database.Tecnologias.ToList();
+            ViewBag.Gft = database.Gfts.ToList();
+            return View();
+        }
+
+        public IActionResult Vagas(){
+            var Vaga = database.Vagas.Include(v => v.Tecnologia).Include(v => v.Gft).ToList();
+            return View(Vaga);
+        }
+
+        public IActionResult CadastrarVaga(){
             ViewBag.Tecnologia = database.Tecnologias.ToList();
             ViewBag.Gft = database.Gfts.ToList();
             return View();
@@ -69,6 +81,24 @@ namespace Desafio_MVC.Controllers
             tecnologiaView.TipoTec = tecnologia.TipoTec;
             
             return View (tecnologiaView);
+        }
+
+            public IActionResult EditarFuncionario (int id){
+            var funcionario = database.Funcionarios.Include(f => f.Tecnologia).Include(f => f.Gft).First(f => f.Id == id);
+            FuncionarioDTO funcionarioView = new FuncionarioDTO();
+            funcionarioView.Id = funcionario.Id;
+            funcionarioView.Cargo = funcionario.Cargo;
+            funcionarioView.InicioWa = funcionario.InicioWa;
+            funcionarioView.Nome = funcionario.Nome;
+            funcionarioView.Matricula = funcionario.Matricula;
+            funcionarioView.TerminoWa = funcionario.TerminoWa;
+            funcionarioView.Telefone = funcionario.Telefone;
+            funcionarioView.Email = funcionario.Email;
+            funcionarioView.TecnologiaId = funcionario.Tecnologia.Id; 
+            funcionarioView.GftId = funcionario.Gft.Id;
+            ViewBag.Tecnologia = database.Tecnologias.ToList();
+            ViewBag.Gft = database.Gfts.ToList();
+            return View (funcionarioView);
         }
     
 

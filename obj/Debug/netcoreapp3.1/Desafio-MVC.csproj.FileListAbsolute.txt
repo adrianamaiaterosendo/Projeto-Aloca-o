@@ -167,7 +167,6 @@ C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Desafio-MVC.genruntimeconfig.cache
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutAdmin.cshtml.g.cs
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\Index.cshtml.g.cs
-C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\Funcionarios.cshtml.g.cs
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\UnidadesGFT.cshtml.g.cs
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\CadastrarGFT.cshtml.g.cs
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\EditarUnidadeGFT.cshtml.g.cs
@@ -175,3 +174,7 @@ C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\CadastrarTecnologia.cshtml.g.cs
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\EditarTecnologia.cshtml.g.cs
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\Cadastrar.cshtml.g.cs
+C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\EditarFuncionario.cshtml.g.cs
+C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\Funcionarios.cshtml.g.cs
+C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\Vagas.cshtml.g.cs
+C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\CadastrarVaga.cshtml.g.cs

@@ -2,11 +2,11 @@
 @{
     Layout = "_LayoutAdmin";
 }
-<h1>Cadastro de Funcionario</h1>
+<h1>Atualização de Funcionario</h1>
 <hr/>
-<form class="form-horizontal" asp-action="Salvar" asp-controller="Funcionario" method="POST">  
+<form class="form-horizontal" asp-action="Atualizar" asp-controller="Funcionario" method="POST">  
 
-<input type="hidden" asp-for="Id" value="0"><br>
+<input type="hidden" asp-for="Id"><br>
 
 <label asp-for="Cargo">Nome do Cargo:</label>
 <input class="form-control" type="text" asp-for="Cargo"placeholder="Digite o Nome do Cargo">
@@ -25,8 +25,8 @@
 <span class="text-danger"asp-validation-for="Matricula"></span><br><br>
 
 <label asp-for="TerminoWa">Previsão de término WA:</label>
-<input class="form-control" type="text" asp-for="TerminoWa"placeholder="Digite a previsão de término de WA"><br><br>
-
+<input class="form-control" type="text" asp-for="TerminoWa"placeholder="Digite a previsão de término de WA">
+<span class="text-danger"asp-validation-for="TerminoWa"></span><br><br>
 
 <label asp-for="Telefone">Telefone do Funcionário:</label>
 <input class="form-control" type="text" asp-for="Telefone"placeholder="Digite o telefone do Funcionário">
@@ -44,9 +44,7 @@
 
 
 
-
-
-<button class="btn btn-success">Cadastrar</button><br><br>
+<button class="btn btn-success">Atualizar</button><br><br>
 
 </form>
 
