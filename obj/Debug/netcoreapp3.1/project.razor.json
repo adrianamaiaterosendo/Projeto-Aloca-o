@@ -14447,6 +14447,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\EditarVaga.cshtml",
+      "TargetPath": "Views\\wa\\EditarVaga.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\EditarUnidadeGFT.cshtml",
       "TargetPath": "Views\\wa\\EditarUnidadeGFT.cshtml",
       "FileKind": "mvc"
@@ -14482,6 +14487,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\Alocacao.cshtml",
+      "TargetPath": "Views\\wa\\Alocacao.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\Tecnologias.cshtml",
       "TargetPath": "Views\\wa\\Tecnologias.cshtml",
       "FileKind": "mvc"
@@ -14499,6 +14509,11 @@
     {
       "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\Cadastrar.cshtml",
       "TargetPath": "Views\\wa\\Cadastrar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\Alocar.cshtml",
+      "TargetPath": "Views\\wa\\Alocar.cshtml",
       "FileKind": "mvc"
     }
   ],

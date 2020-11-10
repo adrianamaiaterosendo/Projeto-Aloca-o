@@ -1,0 +1,59 @@
+@model IEnumerable<Desafio_MVC.Models.Alocacao>
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<a asp-action="Alocar" asp-controller="Wa" class="btn btn-info">Alocar Funcionário</a>
+<hr>
+    <h2>Lista de Alocações</h2>
+    <hr>
+
+<script>   $(document).ready( function () {
+    $('#Alocacao').DataTable({
+        "language": {
+            "lengthMenu" :"Mostrando _MENU_ registros por página",
+            "zeroRecords": "Nenhuma Alocação Cadastrada",
+            "info": "Mostrando página _PAGE_ de _PAGE_",
+            "infoEmpty": "Nenhum registro disponível",
+            "search": "Pesquisar:",
+            "paginate": {
+                "first" : "Primeiro",
+                "last": "Último",
+                "next": "Próximo",
+                "previous": "Anterior"
+                
+            }
+
+        }
+    
+    });
+});
+</script>
+
+
+<table id="Alocacao" class= "table table-striped table-bordered">
+  <thead>
+    <tr>
+        <th>Data Início Alocação</th>
+        <th>Nome Projeto</th>
+        <th>Nome Funcionário</th>
+        <th>Ações</th>
+    </tr>
+</thead>
+<tbody>
+    
+     @foreach (var alocacao in Model)
+{
+    <tr>
+        <td>@alocacao.InicioAlocacao</td> 
+        <td>@alocacao.Vaga.Projeto</td>
+        <td>@alocacao.Funcionario.Nome</td> 
+       
+        <td><a class="btn btn-primary" href="">Editar</a> <a class="btn btn-danger"href="/Alocacao/Deletar/@alocacao.Id">Deletar</a></td>    
+    
+    </tr>
+}
+</tbody>
+</table><br>
+
+<a href="javascript:history.back();">Voltar</a>

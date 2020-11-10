@@ -15,6 +15,8 @@ namespace Desafio_MVC.Models
 
         public Gft Gft {get; set; }
         public Tecnologia Tecnologia {get; set; }
+        public bool Disponivel {get; set; }
+       
         
 
     }

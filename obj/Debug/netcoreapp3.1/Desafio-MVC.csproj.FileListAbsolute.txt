@@ -178,3 +178,6 @@ C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\Funcionarios.cshtml.g.cs
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\Vagas.cshtml.g.cs
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\CadastrarVaga.cshtml.g.cs
+C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\EditarVaga.cshtml.g.cs
+C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\Alocacao.cshtml.g.cs
+C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\Alocar.cshtml.g.cs

@@ -19,7 +19,7 @@ namespace Desafio_MVC.DTO
         [MinLength(5, ErrorMessage="Nome muito pequeno! Tente maior!")]
         public string Nome { get; set; }
         [Required(ErrorMessage="Telefone é obrigatório!")]
-        [Phone]
+        [Phone (ErrorMessage = "Deve ser digitado um telefone válido")]
         public string Telefone { get; set; }
     }
 }

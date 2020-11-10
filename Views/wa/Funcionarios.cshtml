@@ -10,10 +10,27 @@
     <h2>Lista de Funcionários em WA</h2>
     <hr>
 
-    <script>   $(document).ready( function () {
-    $('#Funcionario').DataTable();
-} );</script>
+   <script>   $(document).ready( function () {
+    $('#Funcionario').DataTable({
+        "language": {
+            "lengthMenu" :"Mostrando _MENU_ registros por página",
+            "zeroRecords": "Nenhum funcionário disponível",
+            "info": "Mostrando página _PAGE_ de _PAGE_",
+            "infoEmpty": "Nenhum registro disponível",
+            "search": "Pesquisar:",
+            "paginate": {
+                "first" : "Primeiro",
+                "last": "Último",
+                "next": "Próximo",
+                "previous": "Anterior"
+                
+            }
+
+        }
     
+    });
+});
+</script>
 
 
 <table id="Funcionario" class= "table table-striped table-bordered">
@@ -37,7 +54,7 @@
         <td>@funcionario.InicioWa</td>
         <td>@funcionario.Nome</td> 
         <td>@funcionario.TerminoWa</td> 
-        <td>@funcionario.Tecnologia.NomeTec</td> 
+        @* <td>@funcionario.Tecnologia.NomeTec</td>  *@
         <td>@funcionario.Gft.Nome</td>        
         <td><a class="btn btn-primary" href="/wa/EditarFuncionario/@funcionario.Id">Editar</a> <a class="btn btn-danger"href="/Funcionario/Deletar/@funcionario.Id">Deletar</a></td>    
     

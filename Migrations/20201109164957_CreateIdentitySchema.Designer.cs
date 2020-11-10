@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Desafio_MVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201103185906_CreateIdentitySchema")]
+    [Migration("20201109164957_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,7 +70,7 @@ namespace Desafio_MVC.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("TecnologiaId")
+                    b.Property<int>("TecnologiaID")
                         .HasColumnType("int");
 
                     b.Property<string>("Telefone")
@@ -85,8 +85,6 @@ namespace Desafio_MVC.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("GftId");
-
-                    b.HasIndex("TecnologiaId");
 
                     b.HasIndex("VagaId");
 
@@ -128,10 +126,18 @@ namespace Desafio_MVC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int?>("FuncionarioId")
+                        .HasColumnType("int");
+
                     b.Property<string>("NomeTec")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("TipoTec")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("FuncionarioId");
 
                     b.ToTable("Tecnologias");
                 });
@@ -156,6 +162,9 @@ namespace Desafio_MVC.Migrations
 
                     b.Property<string>("Descricao")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("Disponivel")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int?>("GftId")
                         .HasColumnType("int");
@@ -391,13 +400,16 @@ namespace Desafio_MVC.Migrations
                         .WithMany()
                         .HasForeignKey("GftId");
 
-                    b.HasOne("Desafio_MVC.Models.Tecnologia", "Tecnologia")
-                        .WithMany()
-                        .HasForeignKey("TecnologiaId");
-
                     b.HasOne("Desafio_MVC.Models.Vaga", "Vaga")
                         .WithMany()
                         .HasForeignKey("VagaId");
+                });
+
+            modelBuilder.Entity("Desafio_MVC.Models.Tecnologia", b =>
+                {
+                    b.HasOne("Desafio_MVC.Models.Funcionario", null)
+                        .WithMany("Tecnologia")
+                        .HasForeignKey("FuncionarioId");
                 });
 
             modelBuilder.Entity("Desafio_MVC.Models.Vaga", b =>

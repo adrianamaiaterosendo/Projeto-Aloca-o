@@ -16,6 +16,8 @@ namespace Desafio_MVC.Data
         public DbSet<Funcionario> Funcionarios {get; set;}
         public DbSet<Vaga> Vagas {get; set;}
         public DbSet<Alocacao> Alocacoes {get; set;}
+        public DbSet<Publicacao> Publicacoes {get; set;}
+        public DbSet<FuncionarioTecnologia> FuncionarioTecnologias {get; set;}
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

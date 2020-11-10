@@ -7,16 +7,33 @@
 
 
 <hr>
-    <h2>Lista Vagas</h2>
+    <h2>Lista de Vagas</h2>
     <hr>
 
-    <script>   $(document).ready( function () {
-    $('#Vaga').DataTable();
-} );</script>
+   <script>   $(document).ready( function () {
+    $('#Vagas').DataTable({
+        "language": {
+            "lengthMenu" :"Mostrando _MENU_ registros por página",
+            "zeroRecords": "Nenhuma unidade cadastrada",
+            "info": "Mostrando página _PAGE_ de _PAGE_",
+            "infoEmpty": "Nenhum registro disponível",
+            "search": "Pesquisar:",
+            "paginate": {
+                "first" : "Primeiro",
+                "last": "Último",
+                "next": "Próximo",
+                "previous": "Anterior"
+                
+            }
+
+        }
     
+    });
+});
+</script>
 
 
-<table id="Vaga" class= "table table-striped table-bordered">
+<table id="Vagas" class= "table table-striped table-bordered">
   <thead>
     <tr>
         
@@ -27,6 +44,7 @@
         <th>Descrição</th>
         <th>Projeto</th>
         <th>Quantidade</th>
+        <th>Ações</th>
     </tr>
 </thead>
 <tbody>
@@ -41,7 +59,7 @@
         <td>@vaga.Projeto</td>
         <td>@vaga.Quantidade</td>
         
-        <td><a class="btn btn-primary" href="">Editar</a> <a class="btn btn-danger"href="">Deletar</a></td>    
+        <td><a class="btn btn-primary" href="/wa/EditarVaga/@vaga.Id">Editar</a> <a class="btn btn-danger"href="/Vaga/Deletar/@vaga.Id">Deletar</a></td>    
     </tr>
 }
 </tbody>

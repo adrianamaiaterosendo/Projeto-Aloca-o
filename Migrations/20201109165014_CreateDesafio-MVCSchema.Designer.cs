@@ -3,14 +3,16 @@ using System;
 using Desafio_MVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Desafio_MVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201109165014_CreateDesafio-MVCSchema")]
+    partial class CreateDesafioMVCSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,27 +91,6 @@ namespace Desafio_MVC.Migrations
                     b.ToTable("Funcionarios");
                 });
 
-            modelBuilder.Entity("Desafio_MVC.Models.FuncionarioTecnologia", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("FuncionarioId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TecnologiaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FuncionarioId");
-
-                    b.HasIndex("TecnologiaId");
-
-                    b.ToTable("FuncionarioTecnologias");
-                });
-
             modelBuilder.Entity("Desafio_MVC.Models.Gft", b =>
                 {
                     b.Property<int>("Id")
@@ -137,20 +118,6 @@ namespace Desafio_MVC.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Gfts");
-                });
-
-            modelBuilder.Entity("Desafio_MVC.Models.Publicacao", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Preenchido")
-                        .HasColumnType("tinyint(1)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Publicacoes");
                 });
 
             modelBuilder.Entity("Desafio_MVC.Models.Tecnologia", b =>
@@ -436,17 +403,6 @@ namespace Desafio_MVC.Migrations
                     b.HasOne("Desafio_MVC.Models.Vaga", "Vaga")
                         .WithMany()
                         .HasForeignKey("VagaId");
-                });
-
-            modelBuilder.Entity("Desafio_MVC.Models.FuncionarioTecnologia", b =>
-                {
-                    b.HasOne("Desafio_MVC.Models.Funcionario", "Funcionario")
-                        .WithMany()
-                        .HasForeignKey("FuncionarioId");
-
-                    b.HasOne("Desafio_MVC.Models.Tecnologia", "Tecnologia")
-                        .WithMany()
-                        .HasForeignKey("TecnologiaId");
                 });
 
             modelBuilder.Entity("Desafio_MVC.Models.Tecnologia", b =>

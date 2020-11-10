@@ -2,7 +2,7 @@
 
 namespace Desafio_MVC.Migrations
 {
-    public partial class CreateDesafio_MVCSchema : Migration
+    public partial class AdicionandoPublicacao : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

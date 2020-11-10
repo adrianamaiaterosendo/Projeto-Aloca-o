@@ -66,19 +66,6 @@ namespace Desafio_MVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tecnologias",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    NomeTec = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tecnologias", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -185,6 +172,36 @@ namespace Desafio_MVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Alocacoes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    InicioAlocacao = table.Column<DateTime>(nullable: false),
+                    VagaId = table.Column<int>(nullable: true),
+                    FuncionarioId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Alocacoes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tecnologias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    NomeTec = table.Column<string>(nullable: true),
+                    TipoTec = table.Column<string>(nullable: true),
+                    FuncionarioId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tecnologias", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Vagas",
                 columns: table => new
                 {
@@ -198,7 +215,8 @@ namespace Desafio_MVC.Migrations
                     Projeto = table.Column<string>(nullable: true),
                     Quantidade = table.Column<int>(nullable: false),
                     GftId = table.Column<int>(nullable: true),
-                    TecnologiaId = table.Column<int>(nullable: true)
+                    TecnologiaId = table.Column<int>(nullable: true),
+                    Disponivel = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -231,7 +249,7 @@ namespace Desafio_MVC.Migrations
                     Telefone = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     Alocado = table.Column<bool>(nullable: false),
-                    TecnologiaId = table.Column<int>(nullable: true),
+                    TecnologiaID = table.Column<int>(nullable: false),
                     GftId = table.Column<int>(nullable: true),
                     VagaId = table.Column<int>(nullable: true)
                 },
@@ -245,40 +263,7 @@ namespace Desafio_MVC.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Funcionarios_Tecnologias_TecnologiaId",
-                        column: x => x.TecnologiaId,
-                        principalTable: "Tecnologias",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Funcionarios_Vagas_VagaId",
-                        column: x => x.VagaId,
-                        principalTable: "Vagas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Alocacoes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    InicioAlocacao = table.Column<DateTime>(nullable: false),
-                    VagaId = table.Column<int>(nullable: true),
-                    FuncionarioId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Alocacoes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Alocacoes_Funcionarios_FuncionarioId",
-                        column: x => x.FuncionarioId,
-                        principalTable: "Funcionarios",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Alocacoes_Vagas_VagaId",
                         column: x => x.VagaId,
                         principalTable: "Vagas",
                         principalColumn: "Id",
@@ -338,14 +323,14 @@ namespace Desafio_MVC.Migrations
                 column: "GftId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Funcionarios_TecnologiaId",
-                table: "Funcionarios",
-                column: "TecnologiaId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Funcionarios_VagaId",
                 table: "Funcionarios",
                 column: "VagaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tecnologias_FuncionarioId",
+                table: "Tecnologias",
+                column: "FuncionarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vagas_GftId",
@@ -356,10 +341,38 @@ namespace Desafio_MVC.Migrations
                 name: "IX_Vagas_TecnologiaId",
                 table: "Vagas",
                 column: "TecnologiaId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Alocacoes_Funcionarios_FuncionarioId",
+                table: "Alocacoes",
+                column: "FuncionarioId",
+                principalTable: "Funcionarios",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Alocacoes_Vagas_VagaId",
+                table: "Alocacoes",
+                column: "VagaId",
+                principalTable: "Vagas",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Tecnologias_Funcionarios_FuncionarioId",
+                table: "Tecnologias",
+                column: "FuncionarioId",
+                principalTable: "Funcionarios",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Tecnologias_Funcionarios_FuncionarioId",
+                table: "Tecnologias");
+
             migrationBuilder.DropTable(
                 name: "Alocacoes");
 
@@ -379,13 +392,13 @@ namespace Desafio_MVC.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Funcionarios");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Funcionarios");
 
             migrationBuilder.DropTable(
                 name: "Vagas");

@@ -36,8 +36,37 @@
 <input class="form-control" type="text" asp-for="Email"placeholder="Digite o e-mail do Funcionário">
 <span class="text-danger"asp-validation-for="Email"></span><br><br>
 
-<p>Selecione uma Tecnologia:</p>
-<select class="form-control" asp-for="TecnologiaId" asp-items='@(new SelectList(@ViewBag.Tecnologia,"Id", "NomeTec"))'></select><br><br>
+<p>Selecione a(s) Tecnologia(s):</p>
+<!--<select  class="form-control" multiple asp-for="TecnologiaId" asp-items='@(new SelectList(@ViewBag.Tecnologia,"Id", "NomeTec"))'></select><br><br> -->
+
+<select  class="form-control" onkeyup="javascript:obterIdsSelecionados();" onmouseup="javascript:obterIdsSelecionados();" onchange="javascript:obterIdsSelecionados();" multiple id="TecnologiasSelecionadas" asp-for="TecnologiasSelecionadas" asp-items='@(new SelectList(@ViewBag.Tecnologia,"Id", "NomeTec"))'></select><br><br>
+
+<input type="hidden" id="TecnologiasSelecionadasId" asp-for="TecnologiasSelecionadasId" value="">
+
+<script>
+function obterIdsSelecionados(){
+
+    const myarray = document.getElementById('TecnologiasSelecionadas');
+    myarray.addEventListener('change', (e) => {
+
+    const options = e.target.options;
+    const selectedOptions = [];
+    const selectedValues = [];
+
+    for (let i = 0; i < options.length; i++) {
+        if (options[i].selected) {
+        selectedOptions.push(options[i]);
+        selectedValues.push(options[i].value);
+        }
+    }
+
+    document.getElementById('TecnologiasSelecionadasId').value = selectedValues;
+
+    });
+
+}
+</script>
+
 
 <p>Selecione uma Unidade da GFT:</p>
 <select class="form-control" asp-for="GftId" asp-items='@(new SelectList(@ViewBag.Gft,"Id", "Nome"))'></select><br><br>

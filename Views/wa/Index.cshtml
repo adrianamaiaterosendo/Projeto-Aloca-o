@@ -3,4 +3,18 @@
 }
 
 <h1 class="display-6">Sistema de Gerenciamento de Funcionários em WA</h1><br><br>
-<button type="button" class="btn btn-info">Popular Base de Dados</button>
+
+<form class="form-horizontal" asp-action="PopularBD" asp-controller="wa" >  
+
+<button asp-action="PopularBD" asp-controller="wa" class="btn btn-success" onclick="msg()" id="btnPopular">Popular Banco de Dados</button><br><br>
+
+
+
+<script>function msg() {
+alert("Banco de Dados já atualizado, não é possível atualizar novamente!");
+$("#btnPopular").attr("disabled", true);
+}
+</script>
+
+
+</form>

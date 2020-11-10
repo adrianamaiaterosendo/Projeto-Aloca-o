@@ -1,0 +1,19 @@
+using System.ComponentModel.DataAnnotations;
+using System;
+
+namespace Desafio_MVC.DTO
+{
+    public class AlocacaoDTO
+    {
+
+        [Required]
+        public int Id {get; set; }
+        [Required(ErrorMessage="Data de início da Alocação é obrigatório!")]
+        public DateTime InicioAlocacao {get; set; }
+        [Required(ErrorMessage="Seleção de vaga é obrigatório")]
+        public int VagaId {get; set; }
+        [Required(ErrorMessage="Seleção de funcionário é obrigatório!")]
+        public int FuncionarioId {get; set; }
+
+    }
+}
