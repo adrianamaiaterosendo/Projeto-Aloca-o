@@ -9,6 +9,7 @@ using Desafio_MVC.Models;
 using Desafio_MVC.Data;
 using Desafio_MVC.DTO;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Desafio_MVC.Controllers
@@ -21,17 +22,21 @@ namespace Desafio_MVC.Controllers
     public AlocacaoController(ApplicationDbContext database){
             this.database = database;
     }
+
+    [Authorize(Policy = "TemCargo")]
      
      [HttpPost]
         public IActionResult Salvar (AlocacaoDTO AlocacaoTemporaria){
-            if(ModelState.IsValid){
+            ViewBag.Vaga = database.Vagas.Where(v => v.Disponivel == true).ToList();
+            ViewBag.Funcionario = database.Funcionarios.Where(f => f.Alocado == false).ToList();
+            if(ModelState.IsValid){ 
+                try{             
                 Alocacao alocacao = new Alocacao();
                 alocacao.InicioAlocacao = AlocacaoTemporaria.InicioAlocacao;
                 alocacao.Vaga = database.Vagas.Where(v => v.Quantidade >= 1 && v.Disponivel == true).First(vaga => vaga.Id == AlocacaoTemporaria.VagaId );
-                alocacao.Funcionario = database.Funcionarios.Where(f => f.Alocado == false).First(funcionario => funcionario.Id == AlocacaoTemporaria.FuncionarioId );  
+                alocacao.Funcionario = database.Funcionarios.Where(f => f.Alocado == false).First(funcionario => funcionario.Id == AlocacaoTemporaria.FuncionarioId );
                 database.Alocacoes.Add(alocacao);
-                database.SaveChanges();
-
+                
                 var funcionario = database.Funcionarios.First(func => func.Id == AlocacaoTemporaria.FuncionarioId);
                 funcionario.Alocado = true;
 
@@ -41,16 +46,22 @@ namespace Desafio_MVC.Controllers
                    vaga.Disponivel = false; 
 
                 }else{vaga.Quantidade = vaga.Quantidade - 1;};
-                            
-                                
+                                 
                               
                 
                 database.SaveChanges();
-                return RedirectToAction ("Alocacao", "Wa");
+                return RedirectToAction ("Alocacao", "Wa");}
+                catch(InvalidOperationException ){
+                    return View ("../wa/Alocar");
+                };
 
             }
-            return View("../Wa/Alocar");}
-        
+            ViewBag.Vaga = database.Vagas.Where(v => v.Disponivel == true).ToList();
+            ViewBag.Funcionario = database.Funcionarios.Where(f => f.Alocado == false).ToList();
+            return View ("../wa/Alocar");}
+
+
+        [Authorize(Policy = "TemCargo")]        
         public IActionResult Deletar (int id){
 
             

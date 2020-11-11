@@ -14397,8 +14397,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\Historico.cshtml",
+      "TargetPath": "Views\\wa\\Historico.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\Vagas.cshtml",
       "TargetPath": "Views\\wa\\Vagas.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14419,6 +14439,16 @@
     {
       "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14449,6 +14479,11 @@
     {
       "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\EditarVaga.cshtml",
       "TargetPath": "Views\\wa\\EditarVaga.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
       "FileKind": "mvc"
     },
     {

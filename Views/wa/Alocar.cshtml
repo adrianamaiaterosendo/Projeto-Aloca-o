@@ -9,14 +9,17 @@
 <input type="hidden" asp-for="Id" value="0"><br>
 
 <label asp-for="InicioAlocacao">Insira a data de Início da Alocação</label>
-<input class="form-control" type="date" asp-for="InicioAlocacao" placeholder="Digite a data de alocação"><br><br>
+<input class="form-control" type="date" asp-for="InicioAlocacao" ><br><br>
+<span class="text-danger"asp-validation-for= "InicioAlocacao"></span><br><br>
+
 
 <p>Selecione uma Vaga:</p>
-<select class="form-control" asp-for="VagaId" asp-items='@(new SelectList(@ViewBag.Vaga,"Id", "Projeto"))'></select><br><br>
+<select  class="form-control" asp-for="VagaId" asp-items='@(new SelectList(@ViewBag.Vaga,"Id", "Projeto"))'><option value="">Selecione</option></select><br><br>
+<span class="text-danger" asp-validation-for="VagaId"></span><br><br>
 
 <p>Selecione um Funcionário:</p>
-<select class="form-control" asp-for="FuncionarioId" asp-items='@(new SelectList(@ViewBag.Funcionario,"Id", "Nome"))'></select><br><br>
-
+<select class="form-control" asp-for="FuncionarioId" asp-items='@(new SelectList(@ViewBag.Funcionario,"Id", "Nome"))'><option value="">Selecione</option></select><br><br>
+<span class="text-danger" asp-validation-for="FuncionarioId"></span><br><br>
 
 <button class="btn btn-success">Alocar</button><br><br>
 

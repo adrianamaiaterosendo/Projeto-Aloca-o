@@ -51,7 +51,7 @@
     @foreach (var vaga in Model)
 {
     <tr>
-        <td>@vaga.DataAbertura</td> 
+        <td>@vaga.DataAbertura.ToString("dd/MM/yyyy")</td> 
         <td>@vaga.Codigo</td>
         <td>@vaga.Cliente</td>
         <td>@vaga.Cargo</td>

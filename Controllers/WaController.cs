@@ -9,9 +9,14 @@ using Desafio_MVC.Models;
 using Desafio_MVC.Data;
 using Desafio_MVC.DTO;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+
+
 
 namespace Desafio_MVC.Controllers
 {
+
+    
     public class WaController : Controller
     {
 
@@ -84,6 +89,8 @@ namespace Desafio_MVC.Controllers
             var gft = database.Gfts.ToList();
             return View(gft);
         }
+
+        [Authorize(Policy = "TemCargo")]
         public IActionResult CadastrarGFT(){
             return View();
         }
@@ -92,6 +99,7 @@ namespace Desafio_MVC.Controllers
             return View(tecnologia);
         }
 
+        [Authorize(Policy = "TemCargo")]
         public IActionResult CadastrarTecnologia(){
             return View();
         }
@@ -101,6 +109,7 @@ namespace Desafio_MVC.Controllers
             return View(Funcionario);
         }
 
+        [Authorize(Policy = "TemCargo")]
         public IActionResult Cadastrar(){
             ViewBag.Tecnologia = database.Tecnologias.ToList();
             ViewBag.Gft = database.Gfts.ToList();
@@ -112,6 +121,7 @@ namespace Desafio_MVC.Controllers
             return View(Vaga);
         }
 
+        [Authorize(Policy = "TemCargo")]
         public IActionResult CadastrarVaga(){
             ViewBag.Tecnologia = database.Tecnologias.ToList();
             ViewBag.Gft = database.Gfts.ToList();
@@ -128,13 +138,23 @@ namespace Desafio_MVC.Controllers
             return View(Alocacao);
         }
 
+        [Authorize(Policy = "TemCargo")]
          public IActionResult Alocar(){
             ViewBag.Vaga = database.Vagas.Where(v => v.Disponivel == true).ToList();
             ViewBag.Funcionario = database.Funcionarios.Where(f => f.Alocado == false).ToList();
             
             return View();}
-    
 
+        [Authorize(Policy = "TemCargo")]
+        public IActionResult Historico (){
+            ViewBag.Vaga = (from v in database.Vagas select v.Projeto).Distinct();
+            ViewBag.Funcionario = database.Funcionarios.Where(f => f.Alocado == false).ToList();
+            ViewBag.Vaga = database.Vagas.Where(v => v.Disponivel == true && v.Quantidade >= 1).ToList();
+            var Alocacao = database.Alocacoes.Include(a => a.Funcionario).Include(a => a.Vaga).ToList();
+            return View (Alocacao);
+        }
+    
+        [Authorize(Policy = "TemCargo")]
         public IActionResult EditarUnidadeGFT (int id){
             var unidadeGft = database.Gfts.First(gft => gft.Id == id);
             GftDTO gftView = new GftDTO();
@@ -147,6 +167,8 @@ namespace Desafio_MVC.Controllers
             gftView.Telefone = unidadeGft.Telefone;
             return View (gftView);
         }
+
+        [Authorize(Policy = "TemCargo")]
         public IActionResult EditarTecnologia (int id){
             var tecnologia = database.Tecnologias.First(tec => tec.Id == id);
             TecnologiaDTO tecnologiaView = new TecnologiaDTO();
@@ -156,6 +178,8 @@ namespace Desafio_MVC.Controllers
             
             return View (tecnologiaView);
         }
+
+        [Authorize(Policy = "TemCargo")]
 
             public IActionResult EditarFuncionario (int id){
             ViewBag.Tecnologia = database.Tecnologias.ToList();
@@ -178,7 +202,7 @@ namespace Desafio_MVC.Controllers
             
             return View (funcionarioView);
             }
-        
+            [Authorize(Policy = "TemCargo")]
             public IActionResult EditarVaga (int id){
             var vaga = database.Vagas.Include(v => v.Tecnologia).Include(v => v.Gft).First(v => v.Id == id);
             VagaDTO vagaView = new VagaDTO();

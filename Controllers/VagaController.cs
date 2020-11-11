@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Desafio_MVC.Models;
 using Desafio_MVC.Data;
 using Desafio_MVC.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Desafio_MVC.Controllers
 {
@@ -19,6 +20,8 @@ namespace Desafio_MVC.Controllers
         public VagaController (ApplicationDbContext database){
             this.database = database;
         }
+
+        [Authorize(Policy = "TemCargo")]
         
         [HttpPost]
         public IActionResult Salvar (VagaDTO VagaTemporaria){
@@ -44,6 +47,8 @@ namespace Desafio_MVC.Controllers
             }
             return View("../Wa/CadastrarVaga");}
 
+            [Authorize(Policy = "TemCargo")]
+
              public IActionResult Atualizar (VagaDTO VagaTemporaria){
              if(ModelState.IsValid){
                 var vaga = database.Vagas.First(vag => vag.Id == VagaTemporaria.Id);
@@ -63,6 +68,8 @@ namespace Desafio_MVC.Controllers
                 ViewBag.Gft = database.Gfts.ToList();
                 return View ("../wa/EditarVaga");}
         }
+
+        [Authorize(Policy = "TemCargo")]
 
         public IActionResult Deletar (int id){
             ViewBag.Vaga = database.Vagas.ToList();

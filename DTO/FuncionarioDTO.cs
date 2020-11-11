@@ -19,8 +19,7 @@ namespace Desafio_MVC.DTO
         [MinLength(5, ErrorMessage="Nome muito pequeno! Tente maior! Tente nome e sobrenome.")]
         public string Nome { get; set; }
         [Required (ErrorMessage="Número de Matrícula é obrigatório!")]
-        [Range(1, 10, ErrorMessage = "Número da matrícula deve ser entre 1 até 10 números")]
-        public string Matricula { get; set; }
+         public string Matricula { get; set; }
         public string TerminoWa { get; set; }
         [Required (ErrorMessage="Telefone é obrigatório!")]
         [Phone(ErrorMessage="Telefone inválido!")]

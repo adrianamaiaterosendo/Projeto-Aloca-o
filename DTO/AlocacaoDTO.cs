@@ -9,6 +9,7 @@ namespace Desafio_MVC.DTO
         [Required]
         public int Id {get; set; }
         [Required(ErrorMessage="Data de início da Alocação é obrigatório!")]
+        [DataType(DataType.Date, ErrorMessage = "Favor digite uma data válida")]
         public DateTime InicioAlocacao {get; set; }
         [Required(ErrorMessage="Seleção de vaga é obrigatório")]
         public int VagaId {get; set; }

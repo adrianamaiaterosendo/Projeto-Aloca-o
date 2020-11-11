@@ -30,8 +30,9 @@ namespace Desafio_MVC
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddAuthorization(options => options.AddPolicy("TemCargo",policy => policy.RequireClaim("Cargo", "Admin")));
             services.AddControllersWithViews();
            services.AddRazorPages();
         }

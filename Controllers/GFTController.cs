@@ -9,6 +9,7 @@ using Desafio_MVC.Models;
 using System.ComponentModel.DataAnnotations;
 using Desafio_MVC.DTO;
 using Desafio_MVC.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Desafio_MVC.Controllers
 {
@@ -21,6 +22,7 @@ namespace Desafio_MVC.Controllers
             this.database = database;
         }
 
+        [Authorize(Policy = "TemCargo")]
         [HttpPost]
         public IActionResult Salvar (GftDTO GftTemporario){
             if(ModelState.IsValid){
@@ -38,7 +40,7 @@ namespace Desafio_MVC.Controllers
             }
             return View("../Wa/CadastrarGFT");}
 
-     
+        [Authorize(Policy = "TemCargo")]
          public IActionResult Atualizar(GftDTO gftTemporario){
             if(ModelState.IsValid){
                 var gft = database.Gfts.First(uni => uni.Id == gftTemporario.Id);
@@ -51,6 +53,8 @@ namespace Desafio_MVC.Controllers
                 database.SaveChanges();
                 return RedirectToAction ("UnidadesGFT", "Wa");
             }else { return RedirectToAction ("UnidadesGFT", "Wa");}}
+
+        [Authorize(Policy = "TemCargo")]
         
         public IActionResult Deletar (int id){
             ViewBag.Gfts = database.Gfts.ToList();

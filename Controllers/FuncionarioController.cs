@@ -9,6 +9,7 @@ using Desafio_MVC.Models;
 using System.ComponentModel.DataAnnotations;
 using Desafio_MVC.DTO;
 using Desafio_MVC.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Desafio_MVC.Controllers
 {
@@ -19,7 +20,7 @@ namespace Desafio_MVC.Controllers
         public FuncionarioController(ApplicationDbContext database){
             this.database = database;
         }
-
+        [Authorize(Policy = "TemCargo")]
          [HttpPost]    
          public IActionResult Salvar (FuncionarioDTO funcionarioTemporario){
                 ViewBag.Tecnologia = database.Tecnologias.ToList();
@@ -65,6 +66,7 @@ namespace Desafio_MVC.Controllers
                     return View("../Wa/Cadastrar");}
         }
 
+        [Authorize(Policy = "TemCargo")]
         public IActionResult Atualizar (FuncionarioDTO funcionarioTemporario){
              if(ModelState.IsValid){
                 var funcionario = database.Funcionarios.First(fun => fun.Id == funcionarioTemporario.Id);
@@ -84,7 +86,7 @@ namespace Desafio_MVC.Controllers
                 ViewBag.Gft = database.Gfts.ToList();
                 return View ("../wa/EditarFuncionario");}
         }
-
+        [Authorize(Policy = "TemCargo")]
         public IActionResult Deletar (int id){
             ViewBag.Funcionario = database.Funcionarios.ToList();
             var funcionario = database.Funcionarios.First(con => con.Id == id);
@@ -101,6 +103,7 @@ namespace Desafio_MVC.Controllers
             
             return RedirectToAction ("Funcionarios","wa");
         }
+        [Authorize(Policy = "TemCargo")]
         public void AtualizarAlocacao (int Id){
             var funcionario = database.Funcionarios.First(fun => fun.Id == Id);
             funcionario.Alocado = false;
