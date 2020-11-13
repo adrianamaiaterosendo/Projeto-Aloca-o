@@ -2,20 +2,67 @@
     Layout = "_LayoutAdmin";
 }
 
-<h1 class="display-6">Sistema de Gerenciamento de Funcionários em WA</h1><br><br>
+<script>
+function insereTexto(testeBD){
 
-<form class="form-horizontal" asp-action="PopularBD" asp-controller="wa" >  
+    alert('entrei aqui');
 
-<button asp-action="PopularBD" asp-controller="wa" class="btn btn-success" onclick="msg()" id="btnPopular">Popular Banco de Dados</button><br><br>
+    //oculta uma div e mostra a outra
+    if(testeBD == true){
+        alert('recebido testeBD='+ testeBD);
+    }
+    else
+    {
+        //oculta uma div e mostra a outra
+        if(testeBD == false){
+            alert('recebido testeBD='+ testeBD);
+        }
+        else
+        {
+            //oculta as 2 divs
+            alert('recebido testeBD='+ testeBD);
+            //pra exibir
+            //document.getElementById(divMsgTrue).style = 'display: none;';
+            //pra ocultar
+            //document.getElementById(divMsgFalse).style = 'display: block;';
+        }
+    }
 
 
+}
 
-<script>function msg() {
-alert("Banco de Dados já atualizado, não é possível atualizar novamente!");
-$("#btnPopular").attr("disabled", true);
+
 }
 </script>
-<button asp-action="TesteBD" asp-controller="Tecnologia" class="btn btn-success" >Popular Banco de Dados</button><br><br>
+
+<h1 class="display-6">Sistema de Gerenciamento de Funcionários em WA</h1><br><br>
+
+<form class="form-horizontal" asp-action="TesteBD" asp-controller="Wa" >  
+
+<button asp-action="TesteBD"  asp-controller="Wa" class="btn btn-success" id="btnPopular" >Popular Banco de Dados</button><br><br>
+<p class="text-danger" id="MostraMgs"> </p>
+<script>
+var enderecoVaga = "https://localhost:5001/wa/TesteBD"
+
+$("#btnPopular").click(function() {
+    var enderecoId = enderecoVaga;
+   $.post(enderecoId, function(dados, status){
+        alert ("Banco de Dados foi atualizado com sucesso, não é possível atualizar novamente!");
+    });
+
+ });  
+</script>
+
+<script>
+$("#btnPopular").click(function()
+    
+    {document.getElementById('MostraMgs').innerHTML = 'Banco de Dados já cadastrado!'}
+)
+
+</script>
+
+
+
 
 
 </form>

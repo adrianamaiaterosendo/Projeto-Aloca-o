@@ -5,5 +5,7 @@ namespace Desafio_MVC.Models
 
         public int Id {get; set; }
         public bool Preenchido {get; set;} 
+
+        public string Nome {get; set;}
     }
 }

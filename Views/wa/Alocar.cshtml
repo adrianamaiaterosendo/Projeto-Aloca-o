@@ -24,8 +24,12 @@ function exibeDetalheVaga(){
         document.getElementById(tblVaga).style = 'display: block;';
     }
 
+    
+
 }
 </script>
+
+
 
 <h1> Alocação de Funcionários </h1>
 <form class="form-horizontal" asp-action="Salvar" asp-controller="Alocacao">  <br>
@@ -52,7 +56,7 @@ function exibeDetalheVaga(){
         @Html.Raw("<table  class= 'table table-responsive'>");
             @Html.Raw("<thead>");
                 @Html.Raw("<tr>");
-                    @Html.Raw("<th colspan='6'><h1>Vaga</h1></th>");
+                    @Html.Raw("<th colspan='6'><h3>Vaga Selecionada</h3></th>");
                 @Html.Raw("</tr>");
                 @Html.Raw("<tr>");
                     @Html.Raw("<th>Codigo</th>");
@@ -83,40 +87,81 @@ function exibeDetalheVaga(){
     </tr>
 </table>
 
-
-
-
-<button class="btn btn-success" id="vagaSelecionada">Pesquisar</button><br><br>
-<input type="hidden" id="vagaSelecionada" asp-for="VagaId" value="">
-
-
-
 </script>
-<p>Selecione um Funcionário:</p>
-<select class="form-control" asp-for="FuncionarioId" asp-items='@(new SelectList(@ViewBag.Funcionario,"Id", "Nome"))'><option value="" id = "Funcionario">Selecione</option></select><br><br>
-<span class="text-danger" asp-validation-for="FuncionarioId"></span><br><br>
+
+
+<script>
+function exibeDetalheFuncionario(){
+
+    //oculta todas as tabelas de das vagas
+    Array.from(document.querySelector("#Funcionario").options).forEach(function(option_element) {
+        let option_value = option_element.value;
+
+        if (option_value != ''){
+            tblFuncionarioScan = 'tblFuncionario_'+ option_value;
+            document.getElementById(tblFuncionarioScan).style = 'display: none;';
+        }
+    });
+
+    // seleciona vaga a ser exibida em detalhe
+    var idFuncionario = document.getElementById('Funcionario').value;
+    if (idFuncionario != '') {
+        var tblFuncionario = 'tblFuncionario_'+ idFuncionario;
+        document.getElementById(tblFuncionario).style = 'display: block;';
+    }
+
+    
+
+}
+</script>
+
+
+<table width="100%">
+    <tr>
+        <td width="30%"> 
+            <p>Selecione um Funcionário:</p>
+            <select class="form-control" onchange="javascript:exibeDetalheFuncionario();"asp-for="FuncionarioId" asp-items='@(new SelectList(@ViewBag.Funcionario,"Id", "Nome"))'id = "Funcionario"><option value="" >Selecione</option></select><br><br>
+            <span class="text-danger" asp-validation-for="FuncionarioId"></span><br><br>
+            <br><br>
+        </td>
+        <td width="5%"></td>
+        <td>
+
+@{
+    foreach (var funcionario in @ViewBag.Funcionario){
+@Html.Raw("<div style='display: none;' id='tblFuncionario_"+ funcionario.Id +"'>");
+        @Html.Raw("<table  class= 'table table-responsive'>");
+            @Html.Raw("<thead>");
+                @Html.Raw("<tr>");
+                    @Html.Raw("<th colspan='6'><h3>Funcionario Selecionado</h3></th>");
+                @Html.Raw("</tr>");
+                @Html.Raw("<tr>");
+                    @Html.Raw("<th>Cargo</th>");
+                    @Html.Raw("<th>Funcionário</th>");
+                @Html.Raw("</tr>");
+            @Html.Raw("</thead>");
+            @Html.Raw("<tbody>");
+                @Html.Raw("<tr>");
+                    @Html.Raw("<td>"+ funcionario.Cargo +"</td>");
+                    @Html.Raw("<td>"+ funcionario.Nome +"</td>");
+                 
+                @Html.Raw("</tr>");
+            @Html.Raw("</tbody>");
+        @Html.Raw("</table>");
+    @Html.Raw("</div>");
+    }
+}
+
+
+        </td>
+    </tr>
+</table>
 
 <button class="btn btn-success">Alocar</button><br><br>
 
 </form>
 
 
-@* <h1> Funcionario </h1>
-<table id="Funcionario" class= "table table-responsive">
-  <thead>
-    <tr>
-        <th>Cargo</th>
-        <th>Nome</th>
-        <th>Tecnologia</th>
-        <th>Unidade GFT</th>
-        
-    </tr>
-</thead>
-        <tr>@ViewBag.Vaga</tr>
- 
-    
-
-</table><br> *@
 
 <br> 
 
