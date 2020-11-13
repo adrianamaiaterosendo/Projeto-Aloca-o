@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
 using Desafio_MVC.Models;
+using System.ComponentModel;
+
+
 
 namespace Desafio_MVC.DTO
 
@@ -12,14 +15,19 @@ namespace Desafio_MVC.DTO
         public int Id { get; set; }        
         [Required (ErrorMessage="Cargo é obrigatório!")]
         public string Cargo { get; set; }
-        [Required (ErrorMessage="Início de WA é obrigatório!")]
+
+        [Required(ErrorMessage = "Data deve ser preenchida")]           
         public DateTime InicioWa { get; set; }
+
         [Required (ErrorMessage="Nome é obrigatório!")]
         [StringLength(100, ErrorMessage="Nome muito grande! Tente menor!")]
         [MinLength(5, ErrorMessage="Nome muito pequeno! Tente maior! Tente nome e sobrenome.")]
         public string Nome { get; set; }
+
         [Required (ErrorMessage="Número de Matrícula é obrigatório!")]
          public string Matricula { get; set; }
+
+         [Required (ErrorMessage="Previsão de Término de WA é obrigatório!")]
         public string TerminoWa { get; set; }
         [Required (ErrorMessage="Telefone é obrigatório!")]
         [Phone(ErrorMessage="Telefone inválido!")]
@@ -34,7 +42,7 @@ namespace Desafio_MVC.DTO
         [Required (ErrorMessage="Ao menos uma tecnologia é obrigatório!")]
         public List<Tecnologia> TecnologiasSelecionadas {get; set;}
 
-        [Required (ErrorMessage="Ao menos uma tecnologia é obrigatório!")]
+        [Required (ErrorMessage="Ao menos uma tecnologia é obrigatória!")]
         public string TecnologiasSelecionadasId {get; set;}
 
 

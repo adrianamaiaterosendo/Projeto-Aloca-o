@@ -151,6 +151,8 @@
     <tr>
         <th>Data Início Alocação</th>
         <th>Nome Projeto</th>
+        <th>Cliente</th>
+        <th>Código Vaga</th>
         <th>Nome Funcionário</th>
         <th>Ações</th>
     </tr>
@@ -162,6 +164,8 @@
     <tr>
         <td>@alocacao.InicioAlocacao.ToString("dd/MM/yyyy")</td> 
         <td>@alocacao.Vaga.Projeto</td>
+        <td>@alocacao.Vaga.Cliente</td>
+        <td>@alocacao.Vaga.Codigo </td>
         <td>@alocacao.Funcionario.Nome</td> 
        
         <td><a class="btn btn-primary" href="/wa/EditarAlocacao/@alocacao.Id">Editar</a> <a class="btn btn-danger"href="/Alocacao/Deletar/@alocacao.Id">Deletar</a></td>    

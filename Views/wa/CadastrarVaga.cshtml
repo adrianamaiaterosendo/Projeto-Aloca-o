@@ -26,7 +26,8 @@
 <span class="text-danger"asp-validation-for="Cargo"></span><br><br>
 
 <label asp-for="Descricao">Descrição da Vaga:</label>
-<input class="form-control" type="text" asp-for="Descricao"placeholder="Digite uma descrição breve da vaga"><br><br>
+<input class="form-control" type="text" asp-for="Descricao"placeholder="Digite uma descrição breve da vaga">
+<span class="text-danger"asp-validation-for="Descricao"></span><br><br>
 
 
 <label asp-for="Projeto">Nome do Projeto:</label>
@@ -38,11 +39,12 @@
 <span class="text-danger"asp-validation-for="Quantidade"></span><br><br>
 
 <p>Selecione uma Unidade da GFT:</p>
-<select class="form-control" asp-for="GftId" asp-items='@(new SelectList(@ViewBag.Gft,"Id", "Nome"))'></select><br><br>
+<select class="form-control" asp-for="GftId" asp-items='@(new SelectList(@ViewBag.Gft,"Id", "Nome"))'><option value="" >Selecione</option></select>
+<span class="text-danger"asp-validation-for="GftId"></span><br><br>
 
 <p>Selecione uma Tecnologia Principal:</p>
-<select class="form-control" asp-for="TecnologiaId" asp-items='@(new SelectList(@ViewBag.Tecnologia,"Id", "NomeTec"))'></select><br><br>
-
+<select class="form-control" asp-for="TecnologiaId" asp-items='@(new SelectList(@ViewBag.Tecnologia,"Id", "NomeTec"))'><option value="" >Selecione</option></select>
+<span class="text-danger"asp-validation-for="TecnologiaId"></span><br><br>
 
 <button class="btn btn-success">Cadastrar</button><br><br>
 

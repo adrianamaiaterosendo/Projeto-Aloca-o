@@ -25,8 +25,8 @@
 <span class="text-danger"asp-validation-for="Matricula"></span><br><br>
 
 <label asp-for="TerminoWa">Previsão de término WA:</label>
-<input class="form-control" type="text" asp-for="TerminoWa"placeholder="Digite a previsão de término de WA"><br><br>
-
+<input class="form-control" type="text" asp-for="TerminoWa"placeholder="Digite a previsão de término de WA">
+<span class="text-danger"asp-validation-for="TerminoWa"></span><br><br>
 
 <label asp-for="Telefone">Telefone do Funcionário:</label>
 <input class="form-control" type="text" asp-for="Telefone"placeholder="Digite o telefone do Funcionário">
@@ -39,8 +39,8 @@
 <p>Selecione a(s) Tecnologia(s):</p>
 <!--<select  class="form-control" multiple asp-for="TecnologiaId" asp-items='@(new SelectList(@ViewBag.Tecnologia,"Id", "NomeTec"))'></select><br><br> -->
 
-<select  class="form-control" onkeyup="javascript:obterIdsSelecionados();" onmouseup="javascript:obterIdsSelecionados();" onchange="javascript:obterIdsSelecionados();" multiple id="TecnologiasSelecionadas" asp-for="TecnologiasSelecionadas" asp-items='@(new SelectList(@ViewBag.Tecnologia,"Id", "NomeTec"))'></select><br><br>
-
+<select  class="form-control" onkeyup="javascript:obterIdsSelecionados();" onmouseup="javascript:obterIdsSelecionados();" onchange="javascript:obterIdsSelecionados();" multiple id="TecnologiasSelecionadas" asp-for="TecnologiasSelecionadas" asp-items='@(new SelectList(@ViewBag.Tecnologia,"Id", "NomeTec"))'></select>
+<span class="text-danger"asp-validation-for="TecnologiasSelecionadasId"></span><br><br>
 <input type="hidden" id="TecnologiasSelecionadasId" asp-for="TecnologiasSelecionadasId" value="">
 
 <script>
@@ -68,7 +68,8 @@ function obterIdsSelecionados(){
 </script>
 
 <p>Selecione uma Unidade da GFT:</p>
-<select class="form-control" asp-for="GftId" asp-items='@(new SelectList(@ViewBag.Gft,"Id", "Nome"))'></select><br><br>
+<select class="form-control" asp-for="GftId" asp-items='@(new SelectList(@ViewBag.Gft,"Id", "Nome"))'><option value="" >Selecione</option></select>
+<span class="text-danger"asp-validation-for="GftId"></span><br><br>
 
 
 

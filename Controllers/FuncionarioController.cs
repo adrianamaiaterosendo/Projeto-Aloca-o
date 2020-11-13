@@ -23,9 +23,11 @@ namespace Desafio_MVC.Controllers
         [Authorize(Policy = "TemCargo")]
          [HttpPost]    
          public IActionResult Salvar (FuncionarioDTO funcionarioTemporario){
-                ViewBag.Tecnologia = database.Tecnologias.ToList();
-                ViewBag.Gft = database.Gfts.ToList();
+                
+               
                 ViewBag.FuncionarioTecnologia = database.FuncionarioTecnologias.ToList();
+                ViewBag.Tecnologia = database.Tecnologias.Where(t => t.Ativa == true).ToList();
+                ViewBag.Gft = database.Gfts.Where(g => g.Ativa == true).ToList();
                 
                           
                 if(ModelState.IsValid){
@@ -108,13 +110,13 @@ namespace Desafio_MVC.Controllers
         public IActionResult Deletar (int id){
             ViewBag.Funcionario = database.Funcionarios.ToList();
             var funcionario = database.Funcionarios.First(con => con.Id == id);
+            funcionario.Alocado = true;
 
-            //*** Deletar as tecnologias do funcionário ****
             IQueryable<FuncionarioTecnologia> funcionarioTecnologias;
             funcionarioTecnologias = database.FuncionarioTecnologias.Where(t => t.Funcionario == funcionario);
             database.FuncionarioTecnologias.RemoveRange(funcionarioTecnologias);
 
-            //Deletar o funcionário
+           
             database.Funcionarios.Remove(funcionario);
             database.SaveChanges();
 

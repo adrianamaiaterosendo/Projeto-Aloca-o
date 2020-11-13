@@ -38,11 +38,12 @@
 <span class="text-danger"asp-validation-for="Quantidade"></span><br><br>
 
 <p>Selecione uma Unidade da GFT:</p>
-<select class="form-control" asp-for="GftId" asp-items='@(new SelectList(@ViewBag.Gft,"Id", "Nome"))'></select><br><br>
+<select class="form-control" asp-for="GftId" asp-items='@(new SelectList(@ViewBag.Gft,"Id", "Nome"))'></select>
+<span class="text-danger"asp-validation-for="GftId"></span><br><br>
 
 <p>Selecione uma Tecnologia Principal:</p>
-<select class="form-control" asp-for="TecnologiaId" asp-items='@(new SelectList(@ViewBag.Tecnologia,"Id", "NomeTec"))'></select><br><br>
-
+<select class="form-control" asp-for="TecnologiaId" asp-items='@(new SelectList(@ViewBag.Tecnologia,"Id", "NomeTec"))'></select>
+<span class="text-danger"asp-validation-for="TecnologiaId"></span><br><br>
 
 <button class="btn btn-success">Atualizar</button><br><br>
 

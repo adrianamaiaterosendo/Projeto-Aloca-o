@@ -25,8 +25,8 @@ namespace Desafio_MVC.Controllers
         
         [HttpPost]
         public IActionResult Salvar (VagaDTO VagaTemporaria){
-            ViewBag.Tecnologia = database.Tecnologias.ToList();
-            ViewBag.Gft = database.Gfts.ToList();
+            ViewBag.Tecnologia = database.Tecnologias.Where(t => t.Ativa == true).ToList();
+            ViewBag.Gft = database.Gfts.Where(g => g.Ativa == true).ToList();
             if(ModelState.IsValid){
                 Vaga vaga = new Vaga();
                 vaga.DataAbertura = VagaTemporaria.DataAbertura;
@@ -45,12 +45,20 @@ namespace Desafio_MVC.Controllers
                 return RedirectToAction ("Vagas", "Wa");
 
             }
+               ViewBag.Tecnologia = database.Tecnologias.Where(t => t.Ativa == true).ToList();
+               ViewBag.Gft = database.Gfts.Where(g => g.Ativa == true).ToList();
             return View("../Wa/CadastrarVaga");}
 
             [Authorize(Policy = "TemCargo")]
 
              public IActionResult Atualizar (VagaDTO VagaTemporaria){
+                ViewBag.Tecnologia = database.Tecnologias.Where(t => t.Ativa == true).ToList();
+                ViewBag.Gft = database.Gfts.Where(g => g.Ativa == true).ToList();
+            
              if(ModelState.IsValid){
+                ViewBag.Tecnologia = database.Tecnologias.Where(t => t.Ativa == true).ToList();
+                ViewBag.Gft = database.Gfts.Where(g => g.Ativa == true).ToList();
+                
                 var vaga = database.Vagas.First(vag => vag.Id == VagaTemporaria.Id);
                 vaga.DataAbertura = VagaTemporaria.DataAbertura;
                 vaga.Codigo = VagaTemporaria.Codigo;
@@ -64,8 +72,8 @@ namespace Desafio_MVC.Controllers
                 database.SaveChanges();
                  return RedirectToAction ("Vagas","wa");
             }else { 
-                ViewBag.Tecnologia = database.Tecnologias.ToList();
-                ViewBag.Gft = database.Gfts.ToList();
+                ViewBag.Tecnologia = database.Tecnologias.Where(t => t.Ativa == true).ToList();
+                ViewBag.Gft = database.Gfts.Where(g => g.Ativa == true).ToList();
                 return View ("../wa/EditarVaga");}
         }
 
