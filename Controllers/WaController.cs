@@ -473,8 +473,6 @@ namespace Desafio_MVC.Controllers
             [Authorize(Policy = "TemCargo")]
             public IActionResult EditarVaga (int id){
 
-            ViewBag.Tecnologia = database.Tecnologias.Where(t => t.Ativa == true).ToList();
-            ViewBag.Gft = database.Gfts.Where(g => g.Ativa == true).ToList();
             var vaga = database.Vagas.Include(v => v.Tecnologia).Include(v => v.Gft).First(v => v.Id == id);
             VagaDTO vagaView = new VagaDTO();
             vagaView.Id = vaga.Id;
@@ -487,8 +485,8 @@ namespace Desafio_MVC.Controllers
             vagaView.Quantidade = vaga.Quantidade;
             vagaView.GftId = vaga.Gft.Id;
             vagaView.TecnologiaId = vaga.Tecnologia.Id;
-            ViewBag.Tecnologia = database.Tecnologias.ToList();
-            ViewBag.Gft = database.Gfts.ToList();
+            ViewBag.Tecnologia = database.Tecnologias.Where(t => t.Ativa == true).ToList();
+            ViewBag.Gft = database.Gfts.Where(g => g.Ativa == true).ToList();
             return View (vagaView);
         }
 

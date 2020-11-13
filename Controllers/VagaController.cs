@@ -56,9 +56,7 @@ namespace Desafio_MVC.Controllers
                 ViewBag.Gft = database.Gfts.Where(g => g.Ativa == true).ToList();
             
              if(ModelState.IsValid){
-                ViewBag.Tecnologia = database.Tecnologias.Where(t => t.Ativa == true).ToList();
-                ViewBag.Gft = database.Gfts.Where(g => g.Ativa == true).ToList();
-                
+                                                 
                 var vaga = database.Vagas.First(vag => vag.Id == VagaTemporaria.Id);
                 vaga.DataAbertura = VagaTemporaria.DataAbertura;
                 vaga.Codigo = VagaTemporaria.Codigo;

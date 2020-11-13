@@ -68,11 +68,9 @@ namespace Desafio_MVC.Controllers
             
              
             var alocar = database.Alocacoes.Include(f => f.Funcionario).Include(v => v.Vaga).First(a => a.Id == id); 
-            //IQueryable<Funcionario> funcionario;
-            //Funcionario funcionario = new Funcionario();
             var funcionario = database.Funcionarios.First(f => f.Id == alocar.Funcionario.Id);
             funcionario.Alocado = false;
-            //Vaga vaga = new Vaga();
+            
             var vaga = database.Vagas.First (v => v.Id == alocar.Vaga.Id);
             vaga.Quantidade = vaga.Quantidade + 1;
             vaga.Disponivel = true;
