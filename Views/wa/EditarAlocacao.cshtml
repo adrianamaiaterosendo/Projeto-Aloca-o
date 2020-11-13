@@ -1,0 +1,76 @@
+@model Desafio_MVC.DTO.AlocacaoDTO
+
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<h1> Editar Alocação </h1>
+<form class="form-horizontal" asp-action="Atualizar" asp-controller="Alocacao">  <br>
+<input type="hidden" asp-for="Id" ><br>
+
+<label asp-for="InicioAlocacao">Insira a data de Início da Alocação</label>
+<input class="form-control" type="date" asp-for="InicioAlocacao" ><br><br>
+<span class="text-danger"asp-validation-for= "InicioAlocacao"></span><br><br>
+
+
+<p>Selecione uma Vaga:</p>
+<select  class="form-control" asp-for="VagaId" asp-items='@(new SelectList(@ViewBag.Vaga,"Id", "Projeto"))'><option value="">Selecione</option></select><br><br>
+<span class="text-danger" asp-validation-for="VagaId"></span><br><br>
+
+<p>Selecione um Funcionário:</p>
+<select class="form-control" asp-for="FuncionarioId" asp-items='@(new SelectList(@ViewBag.Funcionario,"Id", "Nome"))'><option value="">Selecione</option></select><br><br>
+<span class="text-danger" asp-validation-for="FuncionarioId"></span><br><br>
+
+<button class="btn btn-success">Atualizar</button><br><br>
+
+</form>
+
+@* </form>
+
+<h1> Funcionario </h1>
+<table id="Funcionario" class= "table table-responsive">
+  <thead>
+    <tr>
+        <th>Cargo</th>
+        <th>Nome</th>
+        <th>Tecnologia</th>
+        <th>Unidade GFT</th>
+        
+    </tr>
+</thead>
+<tbody>
+    
+
+</table><br>
+
+<h1> Vaga </h1>
+<table id="Vagas" class= "table table-responsive">
+  <thead>
+    <tr>
+        
+        <th>Codigo</th>
+        <th>Cliente</th>
+        <th>Cargo</th>
+        <th>Descrição</th>
+        <th>Projeto</th>
+        <th>Quantidade</th>
+    </tr>
+
+    <p>
+    @using (Html.BeginForm())
+    {
+        <text>Projeto</text>@Html.DropDownList("Projeto",  new SelectList(ViewBag.Vaga), "Projeto")
+        
+        <input type="submit" value="Procurar" />
+
+    }
+</p>
+</thead>
+<tbody>
+
+</tbody>
+</table><br>  *@
+
+
+
+<a href="javascript:history.back();">Voltar</a>

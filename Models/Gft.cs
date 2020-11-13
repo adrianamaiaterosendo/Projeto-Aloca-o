@@ -10,5 +10,6 @@ namespace Desafio_MVC.Models
         public string Nome { get; set; }
         public string Telefone { get; set; }
 
+        public bool Ativa {get; set; }
     }
 }

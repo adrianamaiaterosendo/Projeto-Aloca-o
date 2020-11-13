@@ -26,6 +26,7 @@ namespace Desafio_MVC.Controllers
                 Tecnologia tecnologia = new Tecnologia();
                 tecnologia.NomeTec = TecnologiaTemporaria.NomeTec;
                 tecnologia.TipoTec = TecnologiaTemporaria.TipoTec;
+                tecnologia.Ativa = true;
                 database.Tecnologias.Add(tecnologia);
                 database.SaveChanges();
                 return RedirectToAction ("Tecnologias", "Wa");
@@ -39,6 +40,7 @@ namespace Desafio_MVC.Controllers
                 var tecnologia = database.Tecnologias.First(tec => tec.Id == tecnologiaTemporaria.Id);
                 tecnologia.NomeTec = tecnologiaTemporaria.NomeTec;
                 tecnologia.TipoTec = tecnologiaTemporaria.TipoTec;
+                tecnologia.Ativa = true;
                 
                 database.SaveChanges();
                 return RedirectToAction ("Tecnologias", "Wa");
@@ -49,10 +51,22 @@ namespace Desafio_MVC.Controllers
             ViewBag.Tecnologias = database.Tecnologias.ToList();
             var tecnologias = database.Tecnologias.First(tec => tec.Id == id);                   
             
-                database.Tecnologias.Remove(tecnologias);
+                tecnologias.Ativa = false;
                 database.SaveChanges();
                         
             return RedirectToAction("Tecnologias", "Wa");}
+
+              public IActionResult TesteBD (){
+           
+            ViewBag.Tecnologia = database.Tecnologias.ToList();
+            ViewBag.Gft = database.Gfts.ToList();
+            ViewBag.Funcionario = database.Funcionarios.ToList();
+
+                                 
+           
+        
+            return Content ("tudo certo");
+        }
     }
         
 }

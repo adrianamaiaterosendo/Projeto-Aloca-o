@@ -4,6 +4,29 @@
     Layout = "_LayoutAdmin";
 }
 
+<script>
+function exibeDetalheVaga(){
+
+    //oculta todas as tabelas de das vagas
+    Array.from(document.querySelector("#Vaga").options).forEach(function(option_element) {
+        let option_value = option_element.value;
+
+        if (option_value != ''){
+            tblVagaScan = 'tblVaga_'+ option_value;
+            document.getElementById(tblVagaScan).style = 'display: none;';
+        }
+    });
+
+    // seleciona vaga a ser exibida em detalhe
+    var idVaga = document.getElementById('Vaga').value;
+    if (idVaga != '') {
+        var tblVaga = 'tblVaga_'+ idVaga;
+        document.getElementById(tblVaga).style = 'display: block;';
+    }
+
+}
+</script>
+
 <h1> Alocação de Funcionários </h1>
 <form class="form-horizontal" asp-action="Salvar" asp-controller="Alocacao">  <br>
 <input type="hidden" asp-for="Id" value="0"><br>
@@ -12,22 +35,73 @@
 <input class="form-control" type="date" asp-for="InicioAlocacao" ><br><br>
 <span class="text-danger"asp-validation-for= "InicioAlocacao"></span><br><br>
 
+<table width="100%">
+    <tr>
+        <td width="30%"> 
+            <p>Selecione uma Vaga:</p>
+            <select class="form-control" onchange="javascript:exibeDetalheVaga();" id = "Vaga"  asp-for="VagaId" asp-items='@(new SelectList(@ViewBag.Vaga,"Id", "Projeto"))'><option value="" >Selecione</option></select><br><br>
+            <span class="text-danger" asp-validation-for="VagaId"></span>
+            <br><br>
+        </td>
+        <td width="5%"></td>
+        <td>
 
-<p>Selecione uma Vaga:</p>
-<select  class="form-control" asp-for="VagaId" asp-items='@(new SelectList(@ViewBag.Vaga,"Id", "Projeto"))'><option value="">Selecione</option></select><br><br>
-<span class="text-danger" asp-validation-for="VagaId"></span><br><br>
+@{
+    foreach (var vaga in @ViewBag.Vaga){
+@Html.Raw("<div style='display: none;' id='tblVaga_"+ vaga.Id +"'>");
+        @Html.Raw("<table  class= 'table table-responsive'>");
+            @Html.Raw("<thead>");
+                @Html.Raw("<tr>");
+                    @Html.Raw("<th colspan='6'><h1>Vaga</h1></th>");
+                @Html.Raw("</tr>");
+                @Html.Raw("<tr>");
+                    @Html.Raw("<th>Codigo</th>");
+                    @Html.Raw("<th>Cliente</th>");
+                    @Html.Raw("<th>Cargo</th>");
+                    @Html.Raw("<th>Descrição</th>");
+                    @Html.Raw("<th>Projeto</th>");
+                    @Html.Raw("<th>Quantidade</th>");
+                @Html.Raw("</tr>");
+            @Html.Raw("</thead>");
+            @Html.Raw("<tbody>");
+                @Html.Raw("<tr>");
+                    @Html.Raw("<td>"+ vaga.Codigo +"</td>");
+                    @Html.Raw("<td>"+ vaga.Cliente +"</td>");
+                    @Html.Raw("<td>"+ vaga.Cargo +"</td>");
+                    @Html.Raw("<td>"+ vaga.Descricao +"</td>");
+                    @Html.Raw("<td>"+ vaga.Projeto +"</td>");
+                    @Html.Raw("<td>"+ vaga.Quantidade +"</td>");
+                @Html.Raw("</tr>");
+            @Html.Raw("</tbody>");
+        @Html.Raw("</table>");
+    @Html.Raw("</div>");
+    }
+}
 
+
+        </td>
+    </tr>
+</table>
+
+
+
+
+<button class="btn btn-success" id="vagaSelecionada">Pesquisar</button><br><br>
+<input type="hidden" id="vagaSelecionada" asp-for="VagaId" value="">
+
+
+
+</script>
 <p>Selecione um Funcionário:</p>
-<select class="form-control" asp-for="FuncionarioId" asp-items='@(new SelectList(@ViewBag.Funcionario,"Id", "Nome"))'><option value="">Selecione</option></select><br><br>
+<select class="form-control" asp-for="FuncionarioId" asp-items='@(new SelectList(@ViewBag.Funcionario,"Id", "Nome"))'><option value="" id = "Funcionario">Selecione</option></select><br><br>
 <span class="text-danger" asp-validation-for="FuncionarioId"></span><br><br>
 
 <button class="btn btn-success">Alocar</button><br><br>
 
 </form>
 
-@* </form>
 
-<h1> Funcionario </h1>
+@* <h1> Funcionario </h1>
 <table id="Funcionario" class= "table table-responsive">
   <thead>
     <tr>
@@ -38,38 +112,19 @@
         
     </tr>
 </thead>
-<tbody>
+        <tr>@ViewBag.Vaga</tr>
+ 
     
 
-</table><br>
+</table><br> *@
 
-<h1> Vaga </h1>
-<table id="Vagas" class= "table table-responsive">
-  <thead>
-    <tr>
-        
-        <th>Codigo</th>
-        <th>Cliente</th>
-        <th>Cargo</th>
-        <th>Descrição</th>
-        <th>Projeto</th>
-        <th>Quantidade</th>
-    </tr>
+<br> 
 
-    <p>
-    @using (Html.BeginForm())
-    {
-        <text>Projeto</text>@Html.DropDownList("Projeto",  new SelectList(ViewBag.Vaga), "Projeto")
-        
-        <input type="submit" value="Procurar" />
 
-    }
-</p>
-</thead>
-<tbody>
 
-</tbody>
-</table><br>  *@
+
+
+
 
 
 

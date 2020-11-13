@@ -1,4 +1,5 @@
-@model IEnumerable<Desafio_MVC.Models.Funcionario>
+
+@model IEnumerable<Desafio_MVC.Models.FuncionarioTecnologia>
 @{
     Layout = "_LayoutAdmin";
 }
@@ -40,26 +41,55 @@
         <th>Inicio WA</th>
         <th>Nome</th>
         <th>Previsão término WA</th>
-        <th>Tecnologia</th>
+        <th>Tecnologias</th>
         <th>Unidade GFT</th>
         <th>Ações</th>
     </tr>
 </thead>
 <tbody>
-    
-     @foreach (var funcionario in Model)
-{
-    <tr>
-        <td>@funcionario.Cargo</td> 
-        <td>@funcionario.InicioWa.ToString("dd/MM/yyyy")</td>
-        <td>@funcionario.Nome</td> 
-        <td>@funcionario.TerminoWa</td> 
-        @* <td>@funcionario.Tecnologia.NomeTec</td>  *@
-        <td>@funcionario.Gft.Nome</td>        
-        <td><a class="btn btn-primary" href="/wa/EditarFuncionario/@funcionario.Id">Editar</a> <a class="btn btn-danger"href="/Funcionario/Deletar/@funcionario.Id">Deletar</a></td>    
-    
-    </tr>
+
+
+@{
+    var funcionarioIdAnterior = 0;
+    foreach (var funcionario in Model){
+        
+        if (funcionario.Funcionario.Id != funcionarioIdAnterior){
+            @Html.Raw("<tr>")
+                funcionarioIdAnterior = funcionario.Funcionario.Id;
+                @Html.Raw("<td>") @funcionario.Funcionario.Cargo @Html.Raw("</td>")
+                @Html.Raw("<td>") @funcionario.Funcionario.InicioWa.ToString("dd/MM/yyyy") @Html.Raw("</td>")
+                @Html.Raw("<td>") @funcionario.Funcionario.Nome @Html.Raw("</td>")
+                @Html.Raw("<td>")
+                if(funcionario.Funcionario.TerminoWa.Equals("sem previsão")){
+                    @funcionario.Funcionario.TerminoWa
+                }else{
+                    @funcionario.Funcionario.TerminoWa.Substring(0,10)
+                }
+                @Html.Raw("</td>")
+                    
+                var tecnologiasNome = "";
+                foreach (var funcionario2 in Model){
+                    
+                    if (funcionario2.Funcionario.Id == funcionario.Funcionario.Id){
+                        if (tecnologiasNome == ""){
+                            tecnologiasNome = funcionario2.Tecnologia.NomeTec;
+                        }else{
+                            tecnologiasNome += " | " + funcionario2.Tecnologia.NomeTec;
+                        }
+                    }
+                }
+                @Html.Raw("<td>") @tecnologiasNome @Html.Raw("</td>") 
+                
+                        
+                @Html.Raw("<td>") @funcionario.Funcionario.Gft.Nome @Html.Raw("</td>") 
+                <td><a class="btn btn-primary" href="/wa/EditarFuncionario/@funcionario.Funcionario.Id">Editar</a> <a class="btn btn-danger"href="/Funcionario/Deletar/@funcionario.Funcionario.Id">Deletar</a></td>    
+
+            @Html.Raw("</tr>");                
+        }
+
+    }
 }
+            
 </tbody>
 </table><br>
 

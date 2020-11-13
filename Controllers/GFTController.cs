@@ -33,6 +33,7 @@ namespace Desafio_MVC.Controllers
                 Gft.Estado = GftTemporario.Estado;
                 Gft.Nome = GftTemporario.Nome;
                 Gft.Telefone = GftTemporario.Telefone;
+                Gft.Ativa = true;
                 database.Gfts.Add(Gft);
                 database.SaveChanges();
                 return RedirectToAction ("UnidadesGFT", "Wa");
@@ -60,7 +61,7 @@ namespace Desafio_MVC.Controllers
             ViewBag.Gfts = database.Gfts.ToList();
             var Gft = database.Gfts.First(uni => uni.Id == id);                   
             
-                database.Gfts.Remove(Gft);
+                Gft.Ativa = false;
                 database.SaveChanges();
                         
             return RedirectToAction("UnidadesGFT", "Wa");}

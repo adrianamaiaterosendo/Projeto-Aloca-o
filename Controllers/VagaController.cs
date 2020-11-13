@@ -74,7 +74,7 @@ namespace Desafio_MVC.Controllers
         public IActionResult Deletar (int id){
             ViewBag.Vaga = database.Vagas.ToList();
             var vaga = database.Vagas.First(vag => vag.Id == id);
-            database.Vagas.Remove(vaga);
+            vaga.Disponivel = false;            
             database.SaveChanges();
             return RedirectToAction ("Vagas","wa");}
 

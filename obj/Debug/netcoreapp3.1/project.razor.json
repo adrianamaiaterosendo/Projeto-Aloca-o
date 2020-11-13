@@ -14542,6 +14542,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\EditarAlocacao.cshtml",
+      "TargetPath": "Views\\wa\\EditarAlocacao.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\AAIO\\My Private Documents\\Curso-MVC\\Desafio-MVC\\Views\\wa\\Cadastrar.cshtml",
       "TargetPath": "Views\\wa\\Cadastrar.cshtml",
       "FileKind": "mvc"

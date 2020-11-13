@@ -8,5 +8,7 @@ namespace Desafio_MVC.Models
         public Vaga Vaga {get; set; }
         public Funcionario Funcionario {get; set; }
 
+        public FuncionarioTecnologia FuncionarioTecnologia {get; set;}
+
     }
 }

@@ -188,3 +188,4 @@ C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
 C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+C:\Users\AAIO\My Private Documents\Curso-MVC\Desafio-MVC\obj\Debug\netcoreapp3.1\Razor\Views\wa\EditarAlocacao.cshtml.g.cs

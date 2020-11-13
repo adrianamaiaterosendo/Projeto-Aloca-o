@@ -21,5 +21,6 @@ namespace Desafio_MVC.DTO
         [Required(ErrorMessage="Telefone é obrigatório!")]
         [Phone (ErrorMessage = "Deve ser digitado um telefone válido")]
         public string Telefone { get; set; }
+        public bool Ativa {get; set; }
     }
 }

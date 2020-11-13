@@ -18,5 +18,6 @@ namespace Desafio_MVC.DTO
         [StringLength(100, ErrorMessage="Nome muito grande! Tente menor!")]
         [MinLength(5, ErrorMessage="Nome muito pequeno! Tente maior!")]
         public string TipoTec {get; set;}
+        public bool Ativa {get; set; }
     }
 }

@@ -3,14 +3,16 @@ using System;
 using Desafio_MVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Desafio_MVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201111172820_AdicionandoTecnologia")]
+    partial class AdicionandoTecnologia
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,9 +28,6 @@ namespace Desafio_MVC.Migrations
                     b.Property<int?>("FuncionarioId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("FuncionarioTecnologiaId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("InicioAlocacao")
                         .HasColumnType("datetime(6)");
 
@@ -38,8 +37,6 @@ namespace Desafio_MVC.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FuncionarioId");
-
-                    b.HasIndex("FuncionarioTecnologiaId");
 
                     b.HasIndex("VagaId");
 
@@ -120,9 +117,6 @@ namespace Desafio_MVC.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    b.Property<bool>("Ativa")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Cep")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -432,10 +426,6 @@ namespace Desafio_MVC.Migrations
                     b.HasOne("Desafio_MVC.Models.Funcionario", "Funcionario")
                         .WithMany()
                         .HasForeignKey("FuncionarioId");
-
-                    b.HasOne("Desafio_MVC.Models.FuncionarioTecnologia", "FuncionarioTecnologia")
-                        .WithMany()
-                        .HasForeignKey("FuncionarioTecnologiaId");
 
                     b.HasOne("Desafio_MVC.Models.Vaga", "Vaga")
                         .WithMany()

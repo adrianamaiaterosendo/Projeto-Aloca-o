@@ -76,10 +76,28 @@ namespace Desafio_MVC.Controllers
                 funcionario.Matricula = funcionarioTemporario.Matricula;
                 funcionario.TerminoWa = funcionarioTemporario.TerminoWa;
                 funcionario.Telefone = funcionarioTemporario.Telefone;
-                funcionario.Email = funcionarioTemporario.Email;
-                //funcionario.Tecnologia = database.Tecnologias.First(func => func.Id == funcionarioTemporario.TecnologiaId);
+                funcionario.Email = funcionarioTemporario.Email;                
                 funcionario.Gft = database.Gfts.First(gft => gft.Id == funcionarioTemporario.GftId );
                 database.SaveChanges();
+
+                // Criar uma lista vazia
+                    List<string> tecnologiasSelecionadasId = new List<string>();
+                    
+                    //Obter string de Ids separados por vírgula e transformar em lista de Ids
+                    tecnologiasSelecionadasId = funcionarioTemporario.TecnologiasSelecionadasId.Split(",").ToList();
+
+                    // Para cada tecnologia da lista, salvar no banco de dados
+                    foreach (var tecnologiaId in tecnologiasSelecionadasId){
+                        //salvar na tabela FuncionarioTecnologia
+                        FuncionarioTecnologia funcionarioTecnologia = new FuncionarioTecnologia();
+                        funcionarioTecnologia.Funcionario = funcionario;
+                        funcionarioTecnologia.Tecnologia = new Tecnologia();
+                        funcionarioTecnologia.Tecnologia = database.Tecnologias.First(tec => tec.Id == Convert.ToInt16(tecnologiaId) );
+                        database.FuncionarioTecnologias.Add(funcionarioTecnologia);
+                        database.SaveChanges();
+                    };
+
+
                  return RedirectToAction ("Funcionarios","wa");
             }else { 
                 ViewBag.Tecnologia = database.Tecnologias.ToList();

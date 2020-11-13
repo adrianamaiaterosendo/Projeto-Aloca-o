@@ -24,6 +24,8 @@ namespace Desafio_MVC.Models
         public string Email { get; set; }
         public bool Alocado {get; set;}
 
+        //public string TecnologiaAgrupada {get; set;}
+
                   
         public ICollection <Tecnologia> Tecnologia {get; set;}
         public int TecnologiaID {get; set;}
@@ -31,6 +33,8 @@ namespace Desafio_MVC.Models
         public Gft Gft { get; set; }
 
         public Vaga Vaga {get; set; } 
+
+        
 
         
     }

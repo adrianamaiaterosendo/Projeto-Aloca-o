@@ -16,5 +16,7 @@ namespace Desafio_MVC.DTO
         [Required(ErrorMessage="Seleção de funcionário é obrigatório!")]
         public int FuncionarioId {get; set; }
 
+        public int FuncionarioTecnologiaId {get; set; }
+
     }
 }

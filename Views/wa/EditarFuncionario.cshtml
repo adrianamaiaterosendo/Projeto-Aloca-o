@@ -36,7 +36,7 @@
 <input class="form-control" type="text" asp-for="Email"placeholder="Digite o e-mail do Funcionário">
 <span class="text-danger"asp-validation-for="Email"></span><br><br>
 
-<p>Selecione a(s) Tecnologia(s):</p>
+<p>Selecione Novamente a(s) Tecnologia(s):</p>
 <!--<select  class="form-control" multiple asp-for="TecnologiaId" asp-items='@(new SelectList(@ViewBag.Tecnologia,"Id", "NomeTec"))'></select><br><br> -->
 
 <select  class="form-control" onkeyup="javascript:obterIdsSelecionados();" onmouseup="javascript:obterIdsSelecionados();" onchange="javascript:obterIdsSelecionados();" multiple id="TecnologiasSelecionadas" asp-for="TecnologiasSelecionadas" asp-items='@(new SelectList(@ViewBag.Tecnologia,"Id", "NomeTec"))'></select><br><br>
