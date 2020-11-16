@@ -38,21 +38,23 @@ namespace Desafio_MVC.Controllers
             ViewBag.Gft = database.Gfts.ToList();
             ViewBag.Funcionario = database.Funcionarios.ToList();
             ViewBag.Publcacao = database.Publicacoes.ToList();
-           
+
+                      
 
             Publicacao p1 = new Publicacao();
             p1.Preenchido = false;
             p1.Nome = "PopularBD";
             database.Add (p1);
             database.SaveChanges();
-            var publicacaoBD = database.Publicacoes.First(p => p.Nome == "PopularBD");         
+            var publicacaoBD = database.Publicacoes.First(p => p.Nome == "PopularBD" && p.Id == 1);  
+            var GftBD = database.Gfts.ToList();       
        
-            if( publicacaoBD.Nome  == "PopularBD" && publicacaoBD.Preenchido == false){
+            if( publicacaoBD.Id == 1 && publicacaoBD.Nome  == "PopularBD" && publicacaoBD.Preenchido == true){
                
+              
                return View("Index");
 
             }else{
-
                     
             Gft g1 = new Gft();
             g1.Cep = "06454-000";
@@ -323,14 +325,19 @@ namespace Desafio_MVC.Controllers
 
             database.AddRange(v1,v2,v3);
             database.SaveChanges();
+            
+            var funcBD = database.Publicacoes.First (p => p.Id == 1);
+            funcBD.Preenchido = true;
+            database.SaveChanges();
+
                
 
-            return View("Index");
+            return View("Index");}
 
             }
               
                
-        }
+        
         
         public IActionResult UnidadesGFT(){
             var gft = database.Gfts.Where(g => g.Ativa == true).ToList();
